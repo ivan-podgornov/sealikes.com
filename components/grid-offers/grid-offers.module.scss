@@ -1,0 +1,44 @@
+@import 'mixins.scss';
+@import 'vars.scss';
+
+@mixin media-two-columns() {
+    $tablet-min-width: map-get(map-get($devices, 'tablet'), 'min');
+    $tablet-max-width: map-get(map-get($devices, 'tablet'), 'max');
+
+    @media
+        screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width),
+        screen and (min-width: 1250px)
+    {
+        @content;
+    }
+}
+
+.container {
+    @include media-two-columns {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @include maximum-for('tablet') {
+        padding-bottom: 84px;
+    }
+}
+
+.left {
+    margin-bottom: 64px;
+
+    @include media-two-columns {
+        width: 100%;
+        margin-bottom: 0;
+        margin-right: 30px;
+    }
+}
+
+.right {
+    @include media-two-columns {
+        width: 35.25%;
+        flex-shrink: 0;
+        min-width: 250px;
+        max-width: 355px;
+    }
+}

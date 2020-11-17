@@ -1,0 +1,52 @@
+@use 'mixins.scss' as *;
+@use 'vars.scss' as *;
+@use '../dispenses-type/dispenses-type.module.scss' as dispenses;
+
+.dispense {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.reward {
+    display: block;
+    width: 100%;
+    color: #121F48;
+    font-size: 12px;
+    white-space: nowrap;
+
+    svg {
+        height: 10px;
+        position: relative;
+        top: 1px;
+        left: 2px;
+        fill: rgba(#121F48, 0.75);
+    }
+}
+
+.renew {
+    position: absolute !important;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.status-container {
+    @include dispenses.media-status-visible {
+        width: 130px;
+        flex-shrink: 0;
+    }
+}
+
+.status-text {
+    display: none;
+    margin-right: 8px;
+    color: #121F48;
+    font-size: 14px;
+
+    @include dispenses.media-status-visible {
+        display: inline-block;
+    }
+}

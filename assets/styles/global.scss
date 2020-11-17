@@ -1,0 +1,38 @@
+@import './vars.scss';
+@import './gilroy.scss';
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: #333;
+    font-family: $font-default;
+    line-height: 1.25;
+    background-color: #FFF;
+}
+
+img,
+iframe {
+    max-width: 100%;
+}
+
+details summary {
+    list-style: none;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    padding:0 !important;
+    border:0 !important;
+    height: 1px !important; 
+    width: 1px !important; 
+    overflow: hidden;
+}

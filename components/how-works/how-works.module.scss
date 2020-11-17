@@ -1,0 +1,175 @@
+@import 'mixins.scss';
+@import 'vars.scss';
+
+.container {
+    margin-top: -130px;
+    padding-top: 65px;
+    overflow: hidden;
+    position: relative;
+
+    @include minimum-for('mobile') {
+        margin-top: -200px;
+        padding-top: 200px;
+    }
+
+    @include minimum-for('tablet') {
+        margin-top: -150px;
+        padding-top: 150px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        margin-top: -200px;
+        padding-top: 200px;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        z-index: -2;
+        background: url('./assets/top-bg.svg') left top no-repeat;
+        transform-origin: center;
+    }
+
+    &:before {
+        height: 456px;
+        width: 466px;
+        top: -150px;
+        left: -303px;
+        transform: rotate(177.82deg);
+
+        @include minimum-for('mobile') {
+            left: -303px;
+        }
+
+        @include minimum-for('tablet') {
+            left: -230px;
+        }
+
+        @include minimum-for('desktop') {
+            left: -150px;
+        }
+    }
+
+    &:after {
+        width: 364.53px;
+        height: 356.58px;
+        right: -270px;
+        bottom: 0;
+        transform: rotate(76.91deg);
+
+        @include minimum-for('tablet') {
+            bottom: -120px;
+        }
+    }
+}
+
+.content {
+    overflow: hidden;
+    padding-bottom: 64px;
+    position: relative;
+    z-index: 2;
+
+    @include minimum-for('mobile') {
+        margin-top: -50px;
+        padding-top: 38px;
+        padding-left: 43.23%;
+    }
+
+    @include minimum-for('tablet') {
+        padding-top: 112px;
+        padding-bottom: 110px;
+    }
+
+    @include minimum-for('desktop') {
+        padding-left: 500px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        padding-top: 156px;
+    }
+}
+
+.list {
+    margin: 32px 0;
+    padding-left: 1.5em;
+    list-style-type: decimal-leading-zero;
+}
+
+.item {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #C5C5C5;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s color linear;
+
+    @include minimum-for('tablet') {
+        font-size: 17px;
+        text-indent: 40px;
+    }
+
+    @include minimum-for('desktop') {
+        font-size: 20px;
+    }
+
+    &:before {
+        content: '';
+        height: 11px;
+        width: 11px;
+        position: absolute;
+        top: 0;
+        background-color: $color-primary--200;
+        border-radius: 3px;
+        transition: 0.2s background-color linear;
+
+        @include minimum-for('tablet') {
+            height: 14px;
+            width: 14px;
+        }
+    }
+
+    @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}):before {
+            right: (11px * ($i - 1)) + (6px * ($i - 1)) + 16px;
+
+            @include minimum-for('tablet') {
+                right: (14px * ($i - 1)) + (6px * ($i - 1)) + (16px * $i - 1);
+            }
+        }
+    }
+
+    span {
+        transition: inherit;
+    }
+}
+
+.active {
+    color: $color-primary--400;
+
+    &:before {
+        background-color: $color-primary--400;
+    }
+
+    span {
+        color: #121F48;
+    }
+}
+
+.image {
+    display: block;
+    width: 90%;
+    margin: 48px auto;
+
+    @include minimum-for('mobile') {
+        width: 40.23%;
+        position: absolute;
+        z-index: -1;
+        top: -8%;
+        left: 6%;
+    }
+
+    @include minimum-for('desktop') {
+        top: -6%;
+    }
+}

@@ -1,0 +1,25 @@
+@use 'vars.scss' as *;
+
+.action {
+    display: inline-block;
+    vertical-align: middle;
+
+    &:not(:last-child) {
+        margin-right: 16px;
+    }
+}
+
+.unread {
+    position: relative;
+
+    &:before {
+        content: '';
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: $color-accent;
+        border-radius: 50%;
+    }
+}

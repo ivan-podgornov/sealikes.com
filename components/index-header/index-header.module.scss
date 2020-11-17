@@ -1,0 +1,20 @@
+@import 'mixins.scss';
+@import 'vars.scss';
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    @media screen and (min-width: 450px) {
+        justify-content: space-between;
+    }
+}
+
+.login {
+    @media screen and (max-width: 449px) {
+        display: none;
+    }
+}

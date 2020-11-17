@@ -1,0 +1,58 @@
+@use 'vars.scss' as *;
+
+@mixin media-status-visible {
+    $mobile-max-width: map-get(map-get($devices, 'mobile'), 'max');
+    $tablet-max-width: map-get(map-get($devices, 'tablet'), 'max');
+
+    @media
+        screen and (min-width: 500px) and (max-width: $mobile-max-width),
+        screen and (min-width: 860px)
+    {
+        @content;
+    }
+};
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed #EEE;
+}
+
+.caption {
+    color: #888;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status {
+    display: none;
+    width: 130px;
+
+    @include media-status-visible {
+        display: block;
+    }
+}
+
+.list {
+    min-height: 320px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.item + .item {
+    margin-top: 20px;
+}
+
+.empty {
+    @extend .list;
+    position: relative;
+    top: 50px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+}

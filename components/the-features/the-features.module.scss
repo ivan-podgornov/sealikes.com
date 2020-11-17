@@ -1,0 +1,52 @@
+@import 'mixins.scss';
+@import 'vars.scss';
+
+.features {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.subtitle,
+.paragraph {
+    @include minimum-for('tablet') {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.subtitle {
+    line-height: 1.2;
+
+    @include maximum-for('mobile') {
+        br {
+            display: none;
+        }
+    }
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    @include minimum-for('tablet') {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.item {
+    margin-top: 32px;
+    margin-bottom: 32px;
+
+    @include minimum-for('tablet') {
+        width: 45%;
+        max-width: 300px;
+        margin: 3% auto;
+    }
+
+    @include minimum-for('desktop') {
+        width: 28%;
+    }
+}

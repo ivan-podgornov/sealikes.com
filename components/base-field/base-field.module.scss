@@ -1,0 +1,44 @@
+.field {
+    display: block;
+    min-height: 44px;
+    padding: 13px 22px 11px;
+    position: relative;
+    color: #7A9DC0;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: transparent;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+}
+
+:global(.no-js) .field input,
+:global(.no-js) .field textarea,
+:global(.no-js) .field select,
+.field input:focus,
+.field textarea:focus,
+.field select:focus,
+.field input:not(:placeholder-shown) {
+    & + .label {
+        top: -10px;
+        font-size: 10px;
+    }
+}
+
+.label {
+    position: absolute;
+    top: 50%;
+    left: 22px;
+    transform: translateY(-50%);
+    transition: 0.2s ease;
+    transition-property: top, transform, font-size;
+}
+
+.error-message {
+    padding-left: 8px;
+    color: red;
+    font-size: 12px;
+}

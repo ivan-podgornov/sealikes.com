@@ -1,0 +1,129 @@
+@import 'vars.scss';
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    counter-reset: steps 0;
+}
+
+.item {
+    margin-bottom: 20px;
+    padding-top: 4px;
+    padding-bottom: 20px;
+    position: relative;
+    font-size: 14px;
+    border-bottom: 1px dashed #CED9E3;
+
+    p {
+        margin: 0;
+        color: $color-primary--300;
+    }
+
+    ol {
+        margin: 0;
+        padding: 0;
+        padding-left: 1em;
+    }
+}
+
+.dropdown {
+    display: block;
+    max-height: 48px;
+    transition: 0.5s max-height ease;
+
+    p:first-of-type,
+    div:first-of-type {
+        margin-top: 24px;
+    }
+
+    &[open] {
+        max-height: 500px;
+
+        .summary {
+            @extend .summary,.active;
+        }
+    }
+}
+
+.summary {
+    padding-left: 48px;
+    position: relative;
+    color: #CED9E3;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-image: none;
+    cursor: pointer;
+
+    &:before {
+        counter-increment: steps 1;
+        content: counter(steps, decimal);
+        height: 24px;
+        width: 24px;
+        position: absolute;
+        top: -6px;
+        left: 0;
+        color: #CED9E3;
+        line-height: 22px;
+        text-align: center;
+        border: 1px solid #CED9E3;
+        border-radius: 50%;
+        transition: 0.2s ease;
+        transition-property: color, background-color;
+    }
+
+    &::-webkit-details-marker {
+        display:none;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &.active {
+        color: #121F48;
+
+        &:before {
+            color: #FFF;
+            background-color: #CED9E3;
+        }
+    }
+
+    svg {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+    }
+}
+
+.field {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.price {
+    color:#121F48;
+    font-weight: 500;
+    white-space: nowrap;
+
+    span {
+        color: $color-primary--400;
+    }
+
+    svg {
+        fill: currentColor;
+    }
+}

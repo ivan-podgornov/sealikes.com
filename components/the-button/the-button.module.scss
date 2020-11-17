@@ -1,0 +1,88 @@
+@import 'vars.scss';
+
+.button {
+    display: inline-block;
+    padding: 8px 26px;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: none;
+    border-radius: 100px;
+    transition: 0.2s box-shadow ease;
+    cursor: pointer;
+}
+
+.accent {
+    background-color: $color-accent;
+
+    &:hover {
+        box-shadow: 0px 5px 25px rgba($color-accent, 0.5);
+    }
+}
+
+.primary,
+.primary-block {
+    background-color: $color-primary--700;
+
+    &:hover {
+        box-shadow: 0px 5px 25px rgba($color-primary--700, 0.5);
+    }
+}
+
+.primary-block {
+    border-radius: 8px;
+}
+
+.medium {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.big {
+    padding: 12px 48px;
+    text-transform: uppercase;
+}
+
+.action,
+.icon {
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    position: relative;
+    line-height: 40px;
+    text-align: center;
+
+    svg { // icon
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.action {
+    background-color: #FFF;
+    border-radius: 50%;
+    box-shadow: 0px 10px 15px rgba(100, 177, 255, 0.1);
+
+    svg {
+        fill: $color-primary--700;
+    }
+}
+
+.icon {
+    box-shadow: none;
+
+    svg {
+        transition: 0.2s fill ease;
+        fill: $color-primary--300;
+    }
+
+    &:hover svg {
+        fill: #CCC;
+    }
+}

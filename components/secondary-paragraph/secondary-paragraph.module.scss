@@ -1,0 +1,13 @@
+@import 'mixins.scss';
+@import 'vars.scss';
+
+.paragraph {
+    color: $color-primary--300;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.69;
+
+    @include minimum-for('tablet') {
+        font-size: 15px;
+    }
+}

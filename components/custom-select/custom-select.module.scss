@@ -1,0 +1,86 @@
+.container {
+    display: block;
+    position: relative;
+
+    &.open .field:before {
+        transform: rotate(180deg);
+    }
+}
+
+.field {
+    padding-right: 48px;
+
+    &:before {
+        content: '';
+        height: 12px;
+        width: 12px;
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        background-image: url('./assets/arrow.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        transform-origin: center;
+        transition: 0.2s transform ease;
+    }
+}
+
+.input {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    padding-left: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: inherit;
+    font: inherit;
+    line-height: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none !important;
+    cursor: auto;
+}
+
+.options {
+    visibility: hidden;
+    overflow: hidden;
+    max-height: 0;
+    width: 100%;
+    margin: 0;
+    padding: 4px 0;
+    position: absolute;
+    z-index: 2;
+    top: calc(100% - 3px);
+    left: 0;
+    color: #7A9DC0;
+    font-size: 15px;
+    list-style-type: none;
+    background-color: #FFF;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 0.2s max-height ease;
+
+    &.visible {
+        visibility: visible;
+        max-height: 300px;
+        border: 1px solid currentColor;
+        border-top: 1px dashed currentColor;
+    }
+}
+
+.option {
+    padding: 8px 20px;
+    transition: 0.2s background-color ease;
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+        background-color: #F7F9FB;
+    }
+
+    &:focus {
+        outline: 1px solid black;
+    }
+}

@@ -1,0 +1,19 @@
+$font-sans-serif: 'Gilroy', 'Tahoma', 'Arial', sans-serif;
+$font-serif: serif;
+$font-default: $font-sans-serif;
+
+$color-accent: #F37068;
+
+$color-primary--100: #F7FBFF;
+$color-primary--200: #C6DFF7;
+$color-primary--300: #8AA5C0;
+$color-primary--400: #3895F5;
+$color-primary--500: #4579CC;
+$color-primary--700: #2A66C5;
+
+$devices: (
+    small-mobile: (max: 449px),
+    mobile: (min: 450px, max: 767px),
+    tablet: (min: 768px, max: 1049px),
+    desktop: (min: 1050px)
+);

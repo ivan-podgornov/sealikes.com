@@ -1,0 +1,132 @@
+@import 'mixins.scss';
+@import 'vars.scss';
+
+.screen {
+    position: relative;
+
+    @include maximum-for('small-mobile') {
+        padding-bottom: 50%;
+        margin-bottom: -20%;
+        text-align: center;
+    }
+
+    @include minimum-for('mobile') {
+        padding-top: 5%;
+        padding-bottom: 25%;
+    }
+
+    @include minimum-for('tablet') {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 8%;
+        padding-bottom: 18%;
+    }
+
+    &:before {
+        $header-height: 84px;
+
+        content: '';
+        height: calc(100% + 84px);
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        top: -$header-height;
+        left: 0;
+        background-image: url('./assets/background.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @include minimum-for('mobile') {
+            background-position: center bottom;
+        }
+    }
+}
+
+.content {
+    width: 100%;
+    position: relative;
+}
+
+.heading {
+    margin: 0;
+    padding-bottom: 20px;
+    color: #FFF;
+    font-size: 38px;
+    font-weight: bold;
+    line-height: 1.16;
+
+    @include minimum-for('mobile') {
+        max-width: 360px;
+    }
+
+    @include minimum-for('tablet') {
+        font-size: 43px;
+    }
+
+    @include minimum-for('desktop') {
+        font-size: 47px;
+    }
+}
+
+.image {
+    width: 90%;
+
+    @include minimum-for('mobile') {
+        width: 40%;
+        position: absolute;
+        z-index: -1;
+        top: 10%;
+        right: 5%;
+    }
+
+    @include minimum-for('tablet') {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.paragraph {
+    color: $color-primary--200;
+    font-size: 13px;
+    line-height: 1.64;
+
+    @include minimum-for('mobile') {
+        max-width: 380px;
+    }
+
+    @include minimum-for('tablet') {
+        font-size: 15px;
+    }
+
+    @include minimum-for('desktop') {
+        font-size: 17px;
+    }
+}
+
+.buttons {
+    width: 100%;
+
+    @include minimum-for('mobile') {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
+
+.login {
+    display: inline-block;
+    margin: 20px 0;
+
+    @include minimum-for('mobile') {
+        margin-right: 48px;
+    }
+}
+
+.more {
+    display: block;
+    color: $color-primary--200;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}

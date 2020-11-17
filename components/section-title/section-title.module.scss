@@ -1,0 +1,19 @@
+@import 'vars.scss';
+
+.title {
+    color: $color-primary--700;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.left {
+    &:before {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 2px;
+        width: 20px;
+        margin-right: 16px;
+        background-color: currentColor;
+    }
+}

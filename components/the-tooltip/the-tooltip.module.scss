@@ -1,0 +1,78 @@
+@use 'mixins.scss' as *;
+@use 'vars.scss' as *;
+
+@keyframes tooltip-show {
+    from {
+        visibility: hidden;
+        opacity: 0;
+        font-size: 0;
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+        font-size: 14;
+    }
+}
+
+.container {
+    &:focus,
+    &:hover {
+        z-index: 4;
+
+        .tooltip {
+            animation-name: tooltip-show;
+            animation-delay: 0.4s;
+            animation-duration: 0;
+            animation-fill-mode: forwards;
+        }
+    }
+}
+
+.tooltip {
+    display: table;
+    visibility: hidden;
+    min-width: 100px;
+    padding: 7px 8px;
+    position: absolute;
+    top: 105%;
+    top: calc(100% + 4px);
+    right: 0;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.25;
+    background-color: rgba(#232F34, 0.85);
+    border-radius: 3px;
+    opacity: 0;
+    transition: 0.3s ease;
+    transition-property: visibility, opacity;
+    cursor: auto;
+
+    &.right {
+        right: 0;
+    }
+
+    &.center {
+        @include minimum-for('desktop') {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &.left {
+        @include minimum-for('desktop') {
+            left: 0;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+details[open] summary .tooltip {
+    animation: none !important;
+    visibility: hidden;
+    opacity: 0;
+}
+
+:global(.no-js) .tooltip {
+    display: none;
+}

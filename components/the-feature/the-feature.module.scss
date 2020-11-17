@@ -1,0 +1,54 @@
+@import 'mixins.scss';
+@import 'vars.scss';
+
+.feature {
+    padding: 0.1px 12px 12px 84px;
+    position: relative;
+    text-align: left;
+    box-shadow: 0px 5px 12px rgba($color-primary--400, 0.2);
+    border-radius: 8px;
+
+    @include minimum-for('tablet') {
+        padding: 4% 6% 3%;
+        text-align: center;
+        box-shadow: 0px 5px 40px rgba($color-primary--400, 0.2);
+        border-radius: 40px;
+    }
+}
+
+.image {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    @include minimum-for('tablet') {
+        width: 50%;
+        height: auto;
+        position: static;
+    }
+}
+
+.title {
+    margin-top: 24px;
+    margin-bottom: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    color: #121F48;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include minimum-for('tablet') {
+        width: 85%;
+        margin-top: 16px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.content {
+    margin-top: 0;
+}

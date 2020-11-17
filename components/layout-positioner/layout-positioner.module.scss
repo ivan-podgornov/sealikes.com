@@ -1,0 +1,9 @@
+@import 'mixins.scss';
+
+.positioner {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+}

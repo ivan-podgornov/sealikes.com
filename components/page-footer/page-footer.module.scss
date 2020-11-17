@@ -1,0 +1,29 @@
+@import 'mixins.scss';
+@import 'vars.scss';
+
+.footer {
+    padding-top: 48px;
+    padding-bottom: 8px;
+    color: #FFF;
+    text-align: center;
+    background-image: url('./assets/background.svg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include minimum-for('tablet') {
+        padding-top: 64px;
+        padding-bottom: 16px;
+        background-size: 100vw 100%;
+    }
+}
+
+.copyright {
+    color: $color-primary--200;
+    font-size: 12px;
+    line-height: 1.1;
+
+    @include minimum-for('mobile') {
+        font-size: 14px;
+    }
+}

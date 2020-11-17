@@ -1,0 +1,58 @@
+.container {
+    overflow: auto;
+    height: 300px;
+    width: 300px;
+    padding: 16px 24px;
+    position: relative;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(100, 177, 255, 0.1);
+}
+
+.header,
+.item:not(:last-of-type) {
+    border-bottom: 1px dashed #CED9E3;
+}
+
+.counter,
+.title {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 16px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.counter {
+    float: right;
+    color: #8AA5C0;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.item {
+    padding: 16px 32px 16px 0;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: -12px;
+}
+
+.empty {
+    width: 100%;
+    padding: 0 16px;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 14px;
+    text-align: center;
+}

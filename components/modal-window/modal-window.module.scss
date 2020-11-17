@@ -1,0 +1,59 @@
+.modal {
+    overflow: auto;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 32;
+    top: 0;
+    left: 0;
+    background-color: rgba(#000, 0.25);
+    border: none;
+    border-radius: 0;
+    outline: none;
+
+    &[open],
+    &:target {
+        display: flex;
+    }
+}
+
+:global(.no-js) .modal {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.content {
+    width: 90%;
+    max-width: 480px;
+    margin-top: -1000px;
+    position: relative;
+    transition: 0.5s margin-top ease;
+}
+
+:global(.no-js) .content {
+    margin-top: 0;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    svg {
+        fill: #121F48 !important;
+    }
+}
+
+.title {
+    margin: 0 0 16px;
+    padding: 12px 0 24px;
+    color: #121F48;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px dashed #CED9E3;
+}

@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.executions {
+    color: #121F48;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.actions {
+    width: 80px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}

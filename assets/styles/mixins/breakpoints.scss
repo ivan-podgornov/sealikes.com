@@ -1,0 +1,54 @@
+@use '../vars.scss' as vars;
+
+// Применяет @content для указанного устройства и шире.
+// @param {String} $device-type - тип устройства
+@mixin minimum-for($device-type) {
+    $device: map-get(vars.$devices, $device-type);
+    $min: map-get($device, min);
+
+    @if $min {
+        @media screen and (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+
+// Применяет @content для указанного устройства и уже.
+// @param {String} $device-type - тип устройства
+@mixin maximum-for($device-type) {
+    $device: map-get(vars.$devices, $device-type);
+    $max: map-get($device, max);
+
+    @if $max {
+        @media screen and (max-width: $max) {
+            @content;
+        }
+    } @else {
+        @content; 
+    }
+}
+
+// Применяет @content только для указанного типа устройства.
+// @param {String} $device-type - тип устройства.
+@mixin only-for($device-type) {
+    $device: map-get(vars.$devices, $device-type);
+    $min: map-get($device, min);
+    $max: map-get($device, max);
+
+    @if $min == null {
+        @include maximum-for($device-type) {
+            @content;
+        }
+    } @else if $max == null {
+        @include minimum-for($device-type) {
+            @content;
+        }
+    } @else {
+        @media screen and (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+}
