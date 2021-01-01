@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import styles from './dispenses-all.module.scss';
 import DispensesType from '../dispenses-type/dispenses-type';
 import TheIcon from '../the-icon/the-icon';
-import type { OfferType } from '@social-exchange/types';
+import { OfferType } from '@social-exchange/types';
 import { MouseEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { check } from 'store/executions';
@@ -14,10 +14,10 @@ export default function DispensesAll() {
     };
 
     const tabs: Array<Tab> = [
-        { text: 'Обмен лайками', type: 'likes' as OfferType },
-        { text: 'Обмен репостами', type: 'reposts' as OfferType },
-        { text: 'Обмен подписчиками', type: 'followers' as OfferType },
-        { text: 'Обмен участниками', type: 'subscribes' as OfferType },
+        { text: 'Обмен лайками', type: OfferType.likes },
+        { text: 'Обмен репостами', type: OfferType.reposts },
+        { text: 'Обмен подписчиками', type: OfferType.friends },
+        { text: 'Обмен участниками', type: OfferType.followers },
     ];
 
     const [active, activate] = useState(tabs[0].text);

@@ -6,12 +6,10 @@ import TextField from '../text-field/text-field';
 import TheButton from '../the-button/the-button';
 import TheIcon from '../the-icon/the-icon';
 
+import type { Dispatch, SetStateAction } from 'react';
+import { OfferType } from '@social-exchange/types';
 import type { Props as DefaultProps } from './types';
 import type { Option } from '../custom-select/types';
-import type {
-    Dispatch,
-    SetStateAction,
-} from 'react';
 
 type Props = DefaultProps & {
     count: string, setCount: Dispatch<SetStateAction<string>>,
@@ -26,10 +24,10 @@ type Props = DefaultProps & {
 
 export default function OffersAddComponent(props: Props) {
     const typeOptions = [
-        { text: 'Лайки', value: 'likes' },
-        { text: 'Репосты', value: 'reposts' },
-        { text: 'Подписчики', value: 'followers' },
-        { text: 'Участники', value: 'subscribes' },
+        { text: 'Лайки', value: OfferType.likes },
+        { text: 'Репосты', value: OfferType.reposts },
+        { text: 'Подписчики', value: OfferType.friends },
+        { text: 'Участники', value: OfferType.followers },
     ];
 
     return (
