@@ -10,10 +10,10 @@ import {
 } from '@social-exchange/types';
 
 const initialState: Dispenses = {
-    likes:      { list: [], reachLimit: false, type: 'likes' as OfferType.likes },
-    reposts:    { list: [], reachLimit: false, type: 'reposts' as OfferType.reposts },
-    followers:  { list: [], reachLimit: false, type: 'followers' as OfferType.followers },
-    subscribes: { list: [], reachLimit: false, type: 'subscribes' as OfferType.subscribes },
+    likes:     { list: [], reachLimit: false, type: OfferType.likes },
+    reposts:   { list: [], reachLimit: false, type: OfferType.reposts },
+    friends:   { list: [], reachLimit: false, type: OfferType.friends },
+    followers: { list: [], reachLimit: false, type: OfferType.followers },
 };
 
 export const dispensesSlice = createSlice({
@@ -24,9 +24,9 @@ export const dispensesSlice = createSlice({
             return action.payload;
         },
 
-        add(state, action: PayloadAction<TypedDispenses<OfferType>>) {
+        add<OT extends OfferType>(state: Dispenses, action: PayloadAction<TypedDispenses<OT>>) {
             const typeDispenses = state[action.payload.type];
-            const list = typeDispenses.list.concat(action.payload.list);
+            const list = (typeDispenses.list as Array<Dispense<OT>>).concat(action.payload.list);
             const reachLimit = action.payload.reachLimit;
             const type = action.payload.type;
 
@@ -36,35 +36,11 @@ export const dispensesSlice = createSlice({
             };
         },
 
-        merge(state, action: PayloadAction<Dispenses>) {
-            return (Object.keys(action.payload) as OfferType[])
-                .reduce((dispenses, key) => ({
-                    ...dispenses,
-                    [key]: {
-                        list: state[key].list.concat(action.payload[key].list),
-                        reachLimit: action.payload[key].reachLimit,
-                        type: key,
-                    },
-                }), state);
-        },
-
-        mergeType(state, action: PayloadAction<TypedDispenses<OfferType>>) {
-            const type = action.payload.type;
-            return {
-                ...state,
-                [type]: {
-                    type,
-                    list: state[type].list.concat(action.payload.list),
-                    reachLimit: action.payload.reachLimit,
-                },
-            };
-        },
-
         remove(state, action: PayloadAction<number[]>) {
             const toRemove = action.payload;
             return (Object.keys(state) as OfferType[])
                 .reduce((dispenses, key) => {
-                    const list = dispenses[key].list
+                    const list = (dispenses[key].list as Array<Dispense>)
                         .filter((dispense) => !toRemove.includes(dispense.id));
                     return {
                         ...dispenses,

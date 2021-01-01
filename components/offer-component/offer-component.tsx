@@ -8,7 +8,7 @@ import TheTooltip from '../the-tooltip/the-tooltip';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { update, remove } from 'store/offers';
-import type { Offer, OfferStatus } from '@social-exchange/types';
+import { Offer, OfferStatus, OfferType } from '@social-exchange/types';
 
 type Props = {
     className?: string,
@@ -18,10 +18,10 @@ type Props = {
 
 export default function OfferComponent(props: Props) {
     const types = {
-        likes: 'лайки',
-        reposts: 'репосты',
-        followers: 'подписчики',
-        subscribes: 'участники',
+        [OfferType.likes]: 'лайки',
+        [OfferType.reposts]: 'репосты',
+        [OfferType.friends]: 'подписчики',
+        [OfferType.followers]: 'участники',
     };
 
     const { offer, component: Component = 'div' } = props;

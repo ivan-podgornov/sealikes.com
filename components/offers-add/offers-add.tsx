@@ -1,5 +1,5 @@
 import OffersAddComponent from './component';
-import type { NetworkType, OfferType } from '@social-exchange/types';
+import { NetworkType, OfferType } from '@social-exchange/types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from 'store/types';
@@ -53,14 +53,15 @@ function calculatePrice(count: string, type: Option|null) {
     const countNum = parseInt(count);
     if (isNaN(countNum)) return 0;
 
-    const priceList = {
-        likes: 1,
-        reposts: 2,
-        followers: 3,
-        subscribes: 4,
-    } as { [key: string]: number };
+    type PriceList = { [key in OfferType]: number };
+    const priceList: PriceList = {
+        [OfferType.likes]: 1,
+        [OfferType.reposts]: 2,
+        [OfferType.friends]: 3,
+        [OfferType.followers]: 4,
+    };
 
     if (type.value in priceList === false) return 0;
-    const onePrice = priceList[type.value];
+    const onePrice = priceList[type.value as OfferType];
     return onePrice * countNum;
 }

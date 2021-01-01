@@ -2,20 +2,20 @@ import classnames from 'classnames';
 import styles from './dispenses-type.module.scss';
 import DispenseComponent from '../dispense-component/dispense-component';
 import TheCard from '../the-card/the-card';
-import type { OfferType } from '@social-exchange/types';
+import type { Dispense, OfferType } from '@social-exchange/types';
 import { useSelector } from 'react-redux';
 import type { RootState } from 'store/types';
 
-type Props = {
-    type: OfferType,
+type Props<OT extends OfferType> = {
+    type: OT,
 };
 
-export default function DispensesType(props: Props) {
+export default function DispensesType<OT extends OfferType>(props: Props<OT>) {
     const typeDispenses = useSelector((state: RootState) => (
         state.dispenses[props.type]
     ));
 
-    const { list: dispenses } = typeDispenses;
+    const dispenses = typeDispenses.list as Array<Dispense<OT>>;
 
     return (
         <TheCard>
